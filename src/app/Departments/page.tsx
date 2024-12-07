@@ -1,7 +1,6 @@
 "use client";
 
 import { Bar, Pie, Line, Radar, Doughnut, Scatter } from "react-chartjs-2";
-import { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, PointElement, LineElement, RadialLinearScale, RadarController } from "chart.js";
 
 ChartJS.register(

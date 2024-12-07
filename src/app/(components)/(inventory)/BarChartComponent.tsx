@@ -2,7 +2,6 @@
 import React from "react";
 import { ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis } from "recharts";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 interface InventoryItem {
   id: string;

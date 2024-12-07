@@ -16,7 +16,7 @@ interface Patient {
 }
 
 export default function PatientsTable() {
-  const [patients] = useState<Patient[]>([
+  const [patients, setPatients] = useState<Patient[]>([
     { id: "1", name: "John Doe", age: 45, gender: "Male", admissionDate: "2024-01-10", department: "Cardiology", bedNumber: "B-12", status: "Active" },
     { id: "2", name: "Jane Smith", age: 30, gender: "Female", admissionDate: "2024-02-20", department: "Neurology", bedNumber: "A-5", status: "Active" },
     { id: "3", name: "Emily Johnson", age: 65, gender: "Female", admissionDate: "2024-03-15", department: "Orthopedics", bedNumber: "C-8", status: "Inactive" },
@@ -34,7 +34,7 @@ export default function PatientsTable() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortKey, setSortKey] = useState<keyof Patient | null>(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  
+
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const patientsPerPage = 5; // Set how many patients per page you want
@@ -46,17 +46,13 @@ export default function PatientsTable() {
       p.department.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Paginate filtered patients
-  const indexOfLastPatient = currentPage * patientsPerPage;
-  const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
-  const currentPatients = filteredPatients.slice(indexOfFirstPatient, indexOfLastPatient);
-
   // Sorting patients
   const handleSort = (key: keyof Patient) => {
     const direction = sortKey === key && sortDirection === "asc" ? "desc" : "asc";
     setSortKey(key);
     setSortDirection(direction);
 
+    // Sort the filtered patients
     const sorted = [...filteredPatients].sort((a, b) => {
       const aValue = a[key];
       const bValue = b[key];
@@ -70,7 +66,15 @@ export default function PatientsTable() {
       }
       return 0;
     });
+
+    // Update the state with the sorted patients
+    setPatients(sorted);
   };
+
+  // Paginate filtered patients
+  const indexOfLastPatient = currentPage * patientsPerPage;
+  const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
+  const currentPatients = filteredPatients.slice(indexOfFirstPatient, indexOfLastPatient);
 
   // Handle page change
   const handlePageChange = (page: number) => {

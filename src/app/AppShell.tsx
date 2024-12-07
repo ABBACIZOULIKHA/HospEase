@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import TopNavbar from "./(components)/TopNavbar";
 import LeftNavbar from "./(components)/LeftNavbar";
-import Footer from "./(components)/Footer";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [isLeftNavbarOpen, setIsLeftNavbarOpen] = useState(false);

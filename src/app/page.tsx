@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import BarChart from "../app/(components)/(dashbord)/BarChart";
 import PieChart from "../app/(components)/(dashbord)/PieChart";

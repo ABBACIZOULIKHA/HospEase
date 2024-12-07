@@ -1,5 +1,5 @@
 // app/api/Staff/route.js
-export async function GET(request) {
+export async function GET() {
   const staff = [
     {
       "id": "S001",

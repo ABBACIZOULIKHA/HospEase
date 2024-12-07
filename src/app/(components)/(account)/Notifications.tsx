@@ -1,22 +1,6 @@
-import React, { useState } from "react";
 
 export default function NotificationsComponent() {
-  const [emailNotifications, setEmailNotifications] = useState({
-    accountChanges: true,
-    groupChanges: true,
-    productUpdates: true,
-    newProducts: true,
-    marketingOffers: false,
-    securityAlerts: true,
-  });
-
-  const [pushNotifications, setPushNotifications] = useState({
-    commentOnPost: true,
-    sharePost: false,
-    followUser: true,
-    newGroupPosts: true,
-    privateMessages: true,
-  });
+  
 
   return (
     <div className="max-w-7xl mx-auto p-8">

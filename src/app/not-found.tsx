@@ -8,8 +8,9 @@ const NotFoundPage = () => {
       <div className="bg-white rounded-xl shadow-lg p-10 max-w-md w-full">
         <h1 className="text-8xl font-extrabold text-blue-600 mb-4 animate-bounce">404</h1>
         <p className="text-2xl text-gray-700 mb-6">
-          Oops! The page you're looking for doesn't exist.
-        </p>
+  Oops! The page you&apos;re looking for doesn&apos;t exist.
+</p>
+
         <p className="text-gray-500 mb-8">
           It might have been removed, or you may have mistyped the URL.
         </p>

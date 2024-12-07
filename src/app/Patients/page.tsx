@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import AgeProgressBar from "../(components)/(patients)/AgeProgressBar";
 import StatusBarChart from "../(components)/(patients)/StatusBarChart";
@@ -34,6 +33,7 @@ function Patients() {
     { status: "Under Observation" },
     { status: "Discharged" },
     { status: "Discharged" },
+    { status: undefined }, // Example of an undefined status
   ];
 
   // Filter out patients with undefined age
@@ -41,11 +41,16 @@ function Patients() {
     (patient) => patient.age !== undefined
   ) as { age: number }[];
 
+  // Filter out patients with undefined status
+  const validStatusPatients = statusPatients.filter(
+    (patient) => patient.status !== undefined
+  ) as { status: PatientStatus }[];
+
   return (
     <div>
       <div className="flex flex-row gap-5">
         <AgeProgressBar patientsAge={validAgePatients} />
-        <StatusBarChart patientsInfo={statusPatients} />
+        <StatusBarChart patientsInfo={validStatusPatients} />
       </div>
       <PatientsTable />
     </div>

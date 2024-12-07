@@ -20,15 +20,13 @@ export default function DoctorsTable() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortKey, setSortKey] = useState<keyof Staff | null>(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  const [error, setError] = useState<string | null>(null);
 
-  // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5; // Number of rows per page
 
   useEffect(() => {
-    const fetchStaff = async () => {
-      try {
+    const fetchStaff = async () => { 
+      
         const response = await fetch("/api/Staff");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -36,14 +34,12 @@ export default function DoctorsTable() {
         const data = await response.json();
         setStaff(data);
         setFilteredStaff(data);
-      } catch (err: any) {
-        setError("Failed to load staff data.");
-      }
+      
     };
-
+  
     fetchStaff();
   }, []);
-
+  
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
     const search = e.target.value.toLowerCase();
@@ -91,9 +87,7 @@ export default function DoctorsTable() {
     setCurrentPage(page);
   };
 
-  if (error) {
-    return <div className="text-center py-10 text-xl text-red-600">{error}</div>;
-  }
+  
 
   return (
     <div className="p-6 bg-gradient-to-r from-blue-50 to-bleu-100 rounded-lg shadow-lg">

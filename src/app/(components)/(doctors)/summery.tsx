@@ -1,21 +1,4 @@
 "use client"
-import { useEffect, useState } from 'react';
-
-interface Staff {
-  id: string;
-  name: string;
-  role: string;
-  department: string;
-  contact: {
-    email: string;
-    phone: string;
-  };
-  status: string;
-  yearsOfExperience: number;
-  specialization?: string;
-  shifts: string[];
-  languagesSpoken?: string[];
-}
 
 export default function StaffSummary() {
 

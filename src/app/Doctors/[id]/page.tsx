@@ -20,6 +20,23 @@ interface Doctor {
   profileImage: string;
   schedule: ScheduleItem[];
 }
+const staticDoctorData: Doctor = {
+  id: "S001",
+  name: "Dr. John Doe",
+  role: "Cardiologist",
+  department: "Cardiology",
+  status: "Active",
+  yearsOfExperience: 10,
+  shifts: ["Morning", "Afternoon"],
+  profileImage: "/images/Doctor.jpg", // Path to the profile image after moving it to public/images
+  schedule: [
+    { day: "Monday", time: "9 AM - 12 PM" },
+    { day: "Tuesday", time: "1 PM - 4 PM" },
+    { day: "Wednesday", time: "9 AM - 12 PM" },
+    { day: "Thursday", time: "2 PM - 5 PM" },
+    { day: "Friday", time: "9 AM - 12 PM" },
+  ],
+};
 
 export default function DoctorDetail() {
   const [doctor, setDoctor] = useState<Doctor | null>(null);
@@ -32,29 +49,14 @@ export default function DoctorDetail() {
   }, []);
 
   // Static doctor data with profile image and agenda (schedule)
-  const staticDoctorData: Doctor = {
-    id: "S001",
-    name: "Dr. John Doe",
-    role: "Cardiologist",
-    department: "Cardiology",
-    status: "Active",
-    yearsOfExperience: 10,
-    shifts: ["Morning", "Afternoon"],
-    profileImage: "/images/Doctor.jpg", // Path to the profile image after moving it to public/images
-    schedule: [
-      { day: "Monday", time: "9 AM - 12 PM" },
-      { day: "Tuesday", time: "1 PM - 4 PM" },
-      { day: "Wednesday", time: "9 AM - 12 PM" },
-      { day: "Thursday", time: "2 PM - 5 PM" },
-      { day: "Friday", time: "9 AM - 12 PM" },
-    ],
-  };
-
+  
   useEffect(() => {
     setDoctor(staticDoctorData);
     setLoading(false); // Simulate loading completion
   }, []); // Only run once when the component mounts
-
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  
   // Prevent rendering until the component has mounted on the client
   if (!isMounted) return null;
 
@@ -69,7 +71,7 @@ export default function DoctorDetail() {
 
   return (
     <div className="p-6 bg-gradient-to-r from-blue-50 to-indigo-100 shadow-xl rounded-lg max-w-4xl mx-auto mt-10">
-      <h1 className="text-3xl font-bold text-Bleu mb-6 text-center">Doctor's Profile</h1>
+      <h1 className="text-3xl font-bold text-Bleu mb-6 text-center">Doctor Profile</h1>
       <div className="flex flex-col md:flex-row items-center bg-white rounded-lg p-6 shadow-lg">
         <Image
           src={DoctorImg}
@@ -89,7 +91,7 @@ export default function DoctorDetail() {
       </div>
 
       <div className="mt-6">
-        <h2 className="text-2xl font-semibold text-Bleu mb-4">Doctor's Schedule</h2>
+        <h2 className="text-2xl font-semibold text-Bleu mb-4">Doctor Schedule</h2>
         {/* Render schedule only if doctor and schedule are available */}
         {doctor.schedule && doctor.schedule.length > 0 ? (
           <table className="min-w-full border-collapse text-gray-700">

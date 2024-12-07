@@ -1,6 +1,6 @@
 // app/api/overview/route.js
 
-export async function GET(request) {
+export async function GET() {
   const overview = [
     {
       "totalPatientsToday": 150,

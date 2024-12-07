@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, TooltipItem } from 'chart.js';
 
 // Register the necessary chart elements
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -11,18 +11,17 @@ interface Patient {
 }
 
 interface StatusBarChartProps {
-  patientsInfo?: Patient[]; // Optional prop with a fallback to empty array
+  patientsInfo?: Patient[]; // Optional prop with a fallback to an empty array
 }
 
 const StatusBarChart: React.FC<StatusBarChartProps> = ({ patientsInfo = [] }) => {
-  // Calculate the number of patientsInfo in each status
+  // Calculate the number of patients in each status
   const statusCounts = {
     Admitted: 0,
     'Under Observation': 0,
     Discharged: 0,
   };
 
-  // Ensure patientsInfo is an array before calling forEach
   patientsInfo.forEach((patient) => {
     if (patient.status === 'Admitted') statusCounts.Admitted += 1;
     if (patient.status === 'Under Observation') statusCounts['Under Observation'] += 1;
@@ -59,8 +58,8 @@ const StatusBarChart: React.FC<StatusBarChartProps> = ({ patientsInfo = [] }) =>
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
-            return `${context.raw} patients`;
+          label: (tooltipItem: TooltipItem<'bar'>) => { // Specify TooltipItem type for "bar" chart
+            return `${tooltipItem.raw} patients`; // Access the `raw` value correctly
           },
         },
       },
@@ -73,7 +72,7 @@ const StatusBarChart: React.FC<StatusBarChartProps> = ({ patientsInfo = [] }) =>
   };
 
   return (
-    <div className="p-6  w-1/2 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-lg items-center">
+    <div className="p-6 w-1/2 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl shadow-lg items-center">
       <h2 className="text-2xl font-bold text-blue-800 text-center">
         Patient Status Distribution
       </h2>
