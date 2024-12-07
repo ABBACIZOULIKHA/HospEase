@@ -20,9 +20,7 @@ export default function NotificationsComponent() {
 
   return (
     <div className="max-w-7xl mx-auto p-8">
-      {/* Notifications Container - Flex Row */}
       <div className="flex flex-wrap gap-8">
-        {/* Email Notifications Section */}
         <div className="flex-1 bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl shadow-lg hover:shadow-2xl transform transition duration-500 ease-in-out hover:scale-105">
           <h2 className="text-3xl font-semibold text-gray-800 mb-4">Email Notifications</h2>
           <form className="space-y-6">
@@ -48,13 +46,7 @@ export default function NotificationsComponent() {
                 <label key={value} className="inline-flex items-center text-sm text-gray-600 cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={emailNotifications[value]}
-                    onChange={() =>
-                      setEmailNotifications({
-                        ...emailNotifications,
-                        [value]: !emailNotifications[value],
-                      })
-                    }
+                   
                     className="form-checkbox h-5 w-5 text-blue-500 transition-all duration-200 ease-in-out hover:text-blue-600"
                   />
                   <span className="ml-3 text-gray-700 font-medium">{label}</span>
@@ -89,13 +81,7 @@ export default function NotificationsComponent() {
                 <label key={value} className="inline-flex items-center text-sm text-gray-600 cursor-pointer">
                   <input
                     type="checkbox"
-                    checked={pushNotifications[value]}
-                    onChange={() =>
-                      setPushNotifications({
-                        ...pushNotifications,
-                        [value]: !pushNotifications[value],
-                      })
-                    }
+                    
                     className="form-checkbox h-5 w-5 text-blue-500 transition-all duration-200 ease-in-out hover:text-blue-600"
                   />
                   <span className="ml-3 text-gray-700 font-medium">{label}</span>
