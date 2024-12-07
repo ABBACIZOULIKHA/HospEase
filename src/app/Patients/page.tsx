@@ -47,14 +47,15 @@ function Patients() {
   // ) as { status: PatientStatus }[];
 
   return (
-     <div>patient</div>
-    // <div>
-    //   <div className="flex flex-row gap-5">
-    //     <AgeProgressBar patientsAge={validAgePatients} />
-    //     <StatusBarChart patientsInfo={validStatusPatients} />
-    //   </div>
-    //   <PatientsTable />
-    // </div>
+     
+    <div>
+    patient
+       {/* <div className="flex flex-row gap-5">
+         <AgeProgressBar patientsAge={validAgePatients} />
+         <StatusBarChart patientsInfo={validStatusPatients} />
+       </div>*/}
+      <PatientsTable /> 
+    </div>
   );
 }
 
