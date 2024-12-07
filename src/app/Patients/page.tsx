@@ -1,6 +1,6 @@
 import React from "react";
-import AgeProgressBar from "../(components)/(patients)/AgeProgressBar";
-import StatusBarChart from "../(components)/(patients)/StatusBarChart";
+// import AgeProgressBar from "../(components)/(patients)/AgeProgressBar";
+// import StatusBarChart from "../(components)/(patients)/StatusBarChart";
 import PatientsTable from "../(components)/(patients)/PatientsTable";
 
 // Define the status type for patients
